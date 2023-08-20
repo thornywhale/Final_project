@@ -1,0 +1,13 @@
+h1,
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Bebas Neue", sans-serif;
+}
+ul {
+  font-family: "Playfair Display", serif;
+  list-style-type: none;
+}
+img {
+  width: 5vw;
+}
