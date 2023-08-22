@@ -31,36 +31,46 @@ function createActorItem({ firstName, lastName, profilePicture, contacts }) {
   const links = contacts.map((contact) => {
     const hostname = new URL(contact).hostname;
     const img = createElement("img", {
+      classNames: ["soc-logo"],
       attributes: { src: socials.get(hostname) },
     });
     return createElement("a", { attributes: { href: contact } }, img);
   });
+  const inits = createElement(
+    "h4",
+    { classNames: ["inits"] },
+    `${firstName.charAt(0)}${lastName.charAt(0)}`
+  );
+  const avatarDiv = createElement(
+    "div",
+    { classNames: ["avatar-wrapper"] },
+    inits
+  );
   const avatar = createElement("img", {
-    attributes: { src: profilePicture },
-    styles: {
-      border: "4px double #ff676c",
-      borderRadius: "50%",
+    classNames: ["avatar"],
+    attributes: {
+      src: profilePicture,
     },
+    events: { load: handleImgLoad(avatarDiv) },
   });
-  const h3 = createElement("h3", {}, firstName + " " + lastName);
+  const h3 = createElement(
+    "h3",
+    { classNames: ["name-surname"] },
+    firstName + " " + lastName
+  );
   const article = createElement(
     "article",
     {
-      styles: {
-        textAlign: "center",
-        margin: "0 20px",
-        border: "3px solid #EAEAEA90",
-        boxShadow: "5px 10px 5px gray",
-        backgroundColor: "white",
-      },
+      classNames: ["actor-wrapper"],
     },
-    avatar,
+    avatarDiv,
     h3,
     ...links
   );
   const liItem = createElement(
     "li",
     {
+      classNames: ["list-item"],
       events: {
         click: () => {
           sel.append(article);

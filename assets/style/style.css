@@ -2,33 +2,55 @@
   height: 100%;
   background: linear-gradient(180deg, white 50%, #ff676c 50%);
 }
-h1,
-h2 {
+h1 {
   text-align: center;
   text-transform: uppercase;
   font-family: "Bebas Neue", sans-serif;
 }
-ul {
+#root,
+#selected {
+  /*ul*/
   font-family: "Playfair Display", serif;
   list-style-type: none;
 }
-li {
-  width: 20vw;
-  min-width: 200px;
-  height: 20vh;
-  min-height: 100px;
+.list-item {
+  /*li*/
+  width: 200px;
+  height: 150px;
   display: inline-block;
 }
-h3{
-  height: 50px;
+.actor-wrapper {
+  /*article*/
+  text-align: center;
+  border: 3px solid #eaeaea90;
+  margin: 5px;
+  box-shadow: 5px 10px 5px rgba(70, 70, 70, 0.404);
+  background-color: white;
+  position: relative;
+  z-index: 1;
 }
-img{
+/* .name-surname {
+
+} */
+.avatar-wrapper {
+  width: 180px;
+  height: 150px;
+}
+.inits {
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  position: absolute;
+  z-index: 0;
+}
+.avatar {
+  width: 120px;
+  height: 120px;
   object-fit: cover;
-  width: 50%;
-  min-width: 100px;
+  border: 4px double #ff676c;
+  border-radius: 50%;
 }
-a>img {
-  object-fit: fill;
-  width: 4vw;
-  min-width: unset;
+.soc-logo {
+  width: 24px;
 }
