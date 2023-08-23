@@ -39,7 +39,9 @@ function createActorItem({ firstName, lastName, profilePicture, contacts }) {
   const inits = createElement(
     "h4",
     { classNames: ["inits"] },
-    `${firstName.charAt(0)}${lastName.charAt(0)}`
+    `${firstName.charAt(0)}${lastName.charAt(0)}` === "nn"
+      ? "?"
+      : `${firstName.charAt(0)}${lastName.charAt(0)}`
   );
   const avatarDiv = createElement(
     "div",
