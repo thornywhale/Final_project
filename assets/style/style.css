@@ -12,7 +12,7 @@ h1 {
   font-family: "Playfair Display", serif;
   list-style-type: none;
 }
-#selected>article{
+#selected > article {
   display: inline-block;
 }
 .list-item {
