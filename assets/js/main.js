@@ -11,15 +11,16 @@ const sel = document.getElementById("selected");
 fetch("./assets/json/data.json")
   .then((response) => response.json())
   .then((actors) => {
-    actors.forEach((actor) => {
-      if (actor.firstName === "" || actor.firstName === null) {
-        actor.firstName = "no_name";
-      }
-      if (actor.lastName === "" || actor.lastName === null) {
-        actor.lastName = "no_surname";
-      }
+    const filteredActors = actors.filter((actor) => {
+      return (
+        typeof actor.id === "number" &&
+        typeof actor.firstName === "string" &&
+        typeof actor.lastName === "string" &&
+        actor.firstName !== "" &&
+        actor.lastName !== ""
+      );
     });
-    const actorItems = actors.map((actor) => createActorItem(actor));
+    const actorItems = filteredActors.map((actor) => createActorItem(actor));
     root.append(...actorItems);
   })
   .catch((error) => {
@@ -39,9 +40,7 @@ function createActorItem({ firstName, lastName, profilePicture, contacts }) {
   const inits = createElement(
     "h4",
     { classNames: ["inits"] },
-    `${firstName.charAt(0)}${lastName.charAt(0)}` === "nn"
-      ? "?"
-      : `${firstName.charAt(0)}${lastName.charAt(0)}`
+    `${firstName.charAt(0)}${lastName.charAt(0)}`
   );
   const avatarDiv = createElement(
     "div",
@@ -75,7 +74,7 @@ function createActorItem({ firstName, lastName, profilePicture, contacts }) {
       classNames: ["list-item"],
       events: {
         click: () => {
-          sel.append(article);
+          liItem.parentNode === root ? sel.append(liItem) : root.append(liItem);
         },
       },
     },
